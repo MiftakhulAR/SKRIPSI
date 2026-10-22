@@ -1,0 +1,24 @@
+name: Sync to Hugging Face Hub
+
+on:
+  push:
+    branches: [ main ] # Ganti menjadi 'master' jika branch utamamu bernama master
+
+  # Memungkinkan kamu menjalankan workflow ini secara manual dari tab Actions
+  workflow_dispatch:
+
+jobs:
+  sync-to-hub:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Push to Hugging Face Hub
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        # Ganti URL di bawah dengan format: https://huggingface.co/spaces/USERNAME_HF/NAMA_SPACE
+        # Jika ingin push ke bagian Models, hapus kata '/spaces'
+        run: git push --force https://ar4496:$HF_TOKEN@huggingface.co/spaces/ar4496/careerai main
