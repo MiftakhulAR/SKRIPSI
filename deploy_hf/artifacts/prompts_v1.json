@@ -1,0 +1,136 @@
+{
+  "prompt_versi": "v1",
+  "penyedia": "groq",
+  "model": "openai/gpt-oss-120b",
+  "suhu": 0,
+  "sistem_ekstraksi": "You extract technical and soft skills from a student's free-text description of their experience. Use ONLY skill names from the provided dictionary, written exactly as in the dictionary. For each skill, quote the exact phrase from the text that shows it. Do not infer skills that are not stated. If no dictionary skill is stated, return an empty list.",
+  "skema_ekstraksi": {
+    "type": "object",
+    "properties": {
+      "skills": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "skill": {
+              "type": "string"
+            },
+            "phrase": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "skill",
+            "phrase"
+          ]
+        }
+      }
+    },
+    "required": [
+      "skills"
+    ]
+  },
+  "sistem_penjelasan": "You explain a career recommendation to an Informatics student of Politeknik Negeri Jakarta (PNJ). The ranking and the fit score were computed by the system; never change or recompute them. Use ONLY the facts in SYSTEM DATA and in PASSAGES. Do not add courses, standards, units, numbers or skills that are not given there. Write short statements in the requested language. Each statement lists its sources: the passage identifiers it uses, and/or \"DATA\" for SYSTEM DATA. If no passages are given, rely on SYSTEM DATA only and do not mention any standard or occupation document. Sections: basis_of_fit (why this career fits), matched_competencies (skills the student already has), competencies_to_improve (the skill gaps, most important first), development_advice (how to close the gaps, including PNJ courses only when SYSTEM DATA lists them).",
+  "skema_penjelasan": {
+    "type": "object",
+    "properties": {
+      "basis_of_fit": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "statement": {
+              "type": "string"
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "statement",
+            "sources"
+          ]
+        }
+      },
+      "matched_competencies": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "statement": {
+              "type": "string"
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "statement",
+            "sources"
+          ]
+        }
+      },
+      "competencies_to_improve": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "statement": {
+              "type": "string"
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "statement",
+            "sources"
+          ]
+        }
+      },
+      "development_advice": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "statement": {
+              "type": "string"
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "statement",
+            "sources"
+          ]
+        }
+      }
+    },
+    "required": [
+      "basis_of_fit",
+      "matched_competencies",
+      "competencies_to_improve",
+      "development_advice"
+    ]
+  },
+  "bagian": [
+    "basis_of_fit",
+    "matched_competencies",
+    "competencies_to_improve",
+    "development_advice"
+  ],
+  "mode_retrieval_evaluasi": "internal"
+}

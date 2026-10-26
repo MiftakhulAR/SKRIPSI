@@ -1,0 +1,154 @@
+type,name,name_id,kind
+skill,Reading Comprehension,Pemahaman bacaan,hard
+skill,Active Listening,Mendengarkan aktif,soft
+skill,Writing,Menulis,soft
+skill,Speaking,Berbicara,soft
+skill,Mathematics,Matematika (keterampilan),hard
+skill,Science,Sains,hard
+skill,Critical Thinking,Berpikir kritis,soft
+skill,Active Learning,Belajar aktif,soft
+skill,Learning Strategies,Strategi belajar,soft
+skill,Monitoring,Pemantauan kinerja,hard
+skill,Social Perceptiveness,Kepekaan sosial,soft
+skill,Coordination,Koordinasi,soft
+skill,Persuasion,Persuasi,soft
+skill,Negotiation,Negosiasi,soft
+skill,Instructing,Mengajar/melatih,soft
+skill,Service Orientation,Orientasi pelayanan,soft
+skill,Complex Problem Solving,Pemecahan masalah kompleks,soft
+skill,Operations Analysis,Analisis kebutuhan operasional,hard
+skill,Technology Design,Perancangan teknologi,hard
+skill,Equipment Selection,Pemilihan peralatan,hard
+skill,Installation,Instalasi,hard
+skill,Programming,Pemrograman,hard
+skill,Operations Monitoring,Pemantauan operasi,hard
+skill,Operation and Control,Pengoperasian dan kendali,hard
+skill,Equipment Maintenance,Pemeliharaan peralatan,hard
+skill,Troubleshooting,Pemecahan gangguan teknis,hard
+skill,Repairing,Perbaikan,hard
+skill,Quality Control Analysis,Analisis kendali mutu,hard
+skill,Judgment and Decision Making,Penilaian dan pengambilan keputusan,soft
+skill,Systems Analysis,Analisis sistem (keterampilan),hard
+skill,Systems Evaluation,Evaluasi sistem,hard
+skill,Time Management,Manajemen waktu,soft
+skill,Management of Financial Resources,Manajemen sumber daya keuangan,hard
+skill,Management of Material Resources,Manajemen sumber daya material,hard
+skill,Management of Personnel Resources,Manajemen sumber daya manusia,soft
+knowledge,Administration and Management,Administrasi dan manajemen,hard
+knowledge,Administrative,Administrasi perkantoran,hard
+knowledge,Economics and Accounting,Ekonomi dan akuntansi,hard
+knowledge,Sales and Marketing,Penjualan dan pemasaran,hard
+knowledge,Customer and Personal Service,Layanan pelanggan,hard
+knowledge,Personnel and Human Resources,Kepegawaian dan SDM,hard
+knowledge,Production and Processing,Produksi dan pengolahan,hard
+knowledge,Food Production,Produksi pangan,hard
+knowledge,Computers and Electronics,Komputer dan elektronika,hard
+knowledge,Engineering and Technology,Teknik dan teknologi,hard
+knowledge,Design,Desain teknik,hard
+knowledge,Building and Construction,Bangunan dan konstruksi,hard
+knowledge,Mechanical,Mekanika,hard
+knowledge,Mathematics,Matematika (pengetahuan),hard
+knowledge,Physics,Fisika,hard
+knowledge,Chemistry,Kimia,hard
+knowledge,Biology,Biologi,hard
+knowledge,Psychology,Psikologi,hard
+knowledge,Sociology and Anthropology,Sosiologi dan antropologi,hard
+knowledge,Geography,Geografi,hard
+knowledge,Medicine and Dentistry,Kedokteran dan kedokteran gigi,hard
+knowledge,Therapy and Counseling,Terapi dan konseling,hard
+knowledge,Education and Training,Pendidikan dan pelatihan,hard
+knowledge,English Language,Bahasa Inggris,hard
+knowledge,Foreign Language,Bahasa asing,hard
+knowledge,Fine Arts,Seni rupa dan pertunjukan,hard
+knowledge,History and Archeology,Sejarah dan arkeologi,hard
+knowledge,Philosophy and Theology,Filsafat dan teologi,hard
+knowledge,Public Safety and Security,Keselamatan dan keamanan publik,hard
+knowledge,Law and Government,Hukum dan pemerintahan,hard
+knowledge,Telecommunications,Telekomunikasi,hard
+knowledge,Communications and Media,Komunikasi dan media,hard
+knowledge,Transportation,Transportasi,hard
+style,Innovation,Inovasi,soft
+style,Achievement Orientation,Orientasi prestasi,soft
+style,Intellectual Curiosity,Rasa ingin tahu intelektual,soft
+style,Tolerance for Ambiguity,Toleransi terhadap ketidakpastian,soft
+style,Initiative,Inisiatif,soft
+style,Adaptability,Kemampuan beradaptasi,soft
+style,Self-Confidence,Percaya diri,soft
+style,Perseverance,Ketekunan,soft
+style,Leadership Orientation,Orientasi kepemimpinan,soft
+style,Humility,Kerendahan hati,soft
+style,Sincerity,Ketulusan,soft
+style,Empathy,Empati,soft
+style,Cooperation,Kerja sama,soft
+style,Optimism,Optimisme,soft
+style,Social Orientation,Orientasi sosial,soft
+style,Cautiousness,Kehati-hatian,soft
+style,Attention to Detail,Ketelitian,soft
+style,Dependability,Dapat diandalkan,soft
+style,Integrity,Integritas,soft
+style,Stress Tolerance,Ketahanan terhadap tekanan,soft
+style,Self-Control,Pengendalian diri,soft
+interest,Accounting,Akuntansi,
+interest,Agriculture,Pertanian,
+interest,Animal Service,Layanan hewan,
+interest,Applied Arts and Design,Seni terapan dan desain,
+interest,Athletics,Olahraga,
+interest,Business Initiatives,Kewirausahaan dan inisiatif bisnis,
+interest,Construction/Woodwork,Konstruksi dan pertukangan,
+interest,Creative Writing,Penulisan kreatif,
+interest,Culinary Art,Seni kuliner,
+interest,Engineering,Teknik (rekayasa),
+interest,Finance,Keuangan,
+interest,Health Care Service,Layanan kesehatan,
+interest,Human Resources,Sumber daya manusia,
+interest,Humanities,Humaniora,
+interest,Information Technology,Teknologi informasi,
+interest,Law,Hukum,
+interest,Life Science,Ilmu hayati,
+interest,Management/Administration,Manajemen dan administrasi,
+interest,Marketing/Advertising,Pemasaran dan periklanan,
+interest,Mathematics/Statistics,Matematika dan statistika,
+interest,Mechanics/Electronics,Mesin dan elektronika,
+interest,Media,Media,
+interest,Medical Science,Ilmu kedokteran,
+interest,Music,Musik,
+interest,Nature/Outdoors,Alam dan kegiatan luar ruang,
+interest,Office Work,Pekerjaan perkantoran,
+interest,Performing Arts,Seni pertunjukan,
+interest,Personal Service,Layanan personal,
+interest,Physical Science,Ilmu fisika dan kimia,
+interest,Physical/Manual Labor,Pekerjaan fisik/manual,
+interest,Politics,Politik,
+interest,Professional Advising,Konsultasi profesional,
+interest,Protective Service,Layanan keamanan dan perlindungan,
+interest,Public Speaking,Berbicara di depan umum,
+interest,Religious Activities,Kegiatan keagamaan,
+interest,Sales,Penjualan,
+interest,Social Science,Ilmu sosial,
+interest,Social Service,Layanan sosial,
+interest,Teaching/Education,Pengajaran dan pendidikan,
+interest,Transportation/Machine Operation,Transportasi dan pengoperasian mesin,
+interest,Visual Arts,Seni visual,
+group,11,Manajemen,
+group,13,Bisnis dan keuangan,
+group,15,Komputer dan matematika,
+group,17,Arsitektur dan teknik,
+group,19,"Ilmu hayati, fisika, dan sosial",
+group,21,Layanan komunitas dan sosial,
+group,23,Hukum,
+group,25,Pendidikan dan perpustakaan,
+group,27,"Seni, desain, hiburan, olahraga, dan media",
+group,29,Tenaga kesehatan profesional dan teknis,
+group,31,Pendukung layanan kesehatan,
+group,33,Layanan perlindungan dan keamanan,
+group,35,Penyiapan dan penyajian makanan,
+group,37,Kebersihan dan perawatan gedung/taman,
+group,39,Perawatan dan layanan personal,
+group,41,Penjualan,
+group,43,Perkantoran dan administrasi,
+group,45,"Pertanian, perikanan, dan kehutanan",
+group,47,Konstruksi dan pertambangan,
+group,49,"Instalasi, pemeliharaan, dan perbaikan",
+group,51,Produksi,
+group,53,Transportasi dan pemindahan barang,
+group,55,Militer,

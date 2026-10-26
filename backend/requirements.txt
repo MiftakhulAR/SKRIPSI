@@ -1,0 +1,14 @@
+fastapi>=0.110
+uvicorn[standard]>=0.29
+python-multipart>=0.0.9
+python-dotenv>=1.0
+httpx>=0.27
+# RAG (patch 11): e5 embedding of the query; the passage embeddings come from Colab (Tahap 11)
+numpy>=1.26
+sentence-transformers>=3.0
+# Database (patch 13): PostgreSQL/Supabase when DATABASE_URL is set; SQLite otherwise
+psycopg[binary]>=3.2
+psycopg-pool>=3.2
+# tests
+pytest>=8
+pandas>=2.0

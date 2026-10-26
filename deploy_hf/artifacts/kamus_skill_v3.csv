@@ -1,0 +1,110 @@
+skill,kategori,pola
+Python,Bahasa pemrograman,python
+Java,Bahasa pemrograman,\bjava\b(?!script)
+JavaScript,Bahasa pemrograman,javascript|\bjs\b
+TypeScript,Bahasa pemrograman,typescript
+PHP,Bahasa pemrograman,\bphp
+Go,Bahasa pemrograman,golang|\bgo lang
+C#,Bahasa pemrograman,c#|c sharp
+C/C++,Bahasa pemrograman,c\+\+
+Kotlin,Bahasa pemrograman,kotlin
+Swift,Bahasa pemrograman,\bswift\b
+Dart,Bahasa pemrograman,\bdart\b
+R,Bahasa pemrograman,\br programming|\bbahasa r\b|\br studio|rstudio
+Ruby,Bahasa pemrograman,\bruby
+Scala,Bahasa pemrograman,\bscala\b
+HTML/CSS,Web,html|css
+Laravel,Web,laravel
+CodeIgniter,Web,codeigniter|\bci3\b
+React,Web,react(?!\s*native)|reactjs
+Vue.js,Web,\bvue
+Angular,Web,angular
+Node.js,Web,node\.?js|nodejs|\bnode\b
+Express.js,Web,express\.?js
+Spring Boot,Web,spring ?boot|\bspring\b
+Django/Flask,Web,django|flask
+.NET,Web,\.net|asp\.net|dotnet
+Next.js,Web,next\.?js
+WordPress,Web,wordpress
+REST API,Web,rest ?api|restful|\bapi\b
+GraphQL,Web,graphql
+Microservices,Web,microservice
+Flutter,Mobile,flutter
+React Native,Mobile,react ?native
+Android,Mobile,android
+iOS,Mobile,\bios\b
+Firebase,Mobile,firebase
+SQL,Basis data,\bsql\b|t-sql|pl/sql|\bddl\b|\bdml\b
+MySQL,Basis data,mysql
+PostgreSQL,Basis data,postgre
+Oracle DB,Basis data,oracle
+SQL Server,Basis data,sql server|mssql|ms sql
+MongoDB,Basis data,mongo
+NoSQL,Basis data,nosql
+Redis,Basis data,redis
+Backup & Recovery,Basis data,backup|recovery
+Database design,Basis data,database design|desain database|perancangan basis data|\berd\b|entity relationship|normali[sz]
+Git,Tools & DevOps,\bgit\b|github|gitlab|bitbucket
+Docker,Tools & DevOps,docker
+Kubernetes,Tools & DevOps,kubernetes|\bk8s\b
+CI/CD,Tools & DevOps,ci/cd|ci cd|jenkins|continuous integration
+Linux,Tools & DevOps,linux|ubuntu|centos|debian|red ?hat
+AWS,Cloud,\baws\b|amazon web services
+GCP,Cloud,\bgcp\b|google cloud
+Azure,Cloud,azure
+Terraform/Ansible,Tools & DevOps,terraform|ansible
+Machine Learning,Data & AI,machine learning|pembelajaran mesin
+Deep Learning,Data & AI,deep learning|neural network|jaringan saraf|pembelajaran mendalam
+TensorFlow/PyTorch,Data & AI,tensorflow|pytorch
+Pandas/NumPy,Data & AI,pandas|numpy
+Statistics,Data & AI,statisti
+Data Visualization,Data & AI,visuali[sz]|dashboard
+Tableau,Data & AI,tableau
+Power BI,Data & AI,power ?bi
+Excel,Data & AI,\bexcel\b
+ETL,Data & AI,\betl\b|data pipeline
+Spark/Hadoop,Data & AI,spark|hadoop|hive
+NLP,Data & AI,\bnlp\b|natural language
+Computer Vision,Data & AI,computer vision
+Networking (TCP/IP),Jaringan,tcp/ip|tcp ip|networking|jaringan komputer|\blan\b|\bwan\b|model osi|\bosi layer|subnet|pengalamatan ip|ip address
+Routing & Switching,Jaringan,routing|switching|\brouter\b|\bvlan\b
+Cisco (CCNA),Jaringan,cisco|ccna|ccnp
+Mikrotik,Jaringan,mikrotik|mtcna
+Firewall,Keamanan,firewall|fortigate|palo alto
+VPN,Jaringan,\bvpn\b
+Windows Server,Jaringan,windows server|active directory
+Virtualization,Jaringan,vmware|virtuali[sz]|hyper-v|proxmox
+Network Security,Keamanan,network security|keamanan jaringan
+Penetration Testing,Keamanan,penetration|pentest|uji penetrasi|vulnerability assessment
+SIEM/SOC,Keamanan,siem|\bsoc\b|security operation
+ISO 27001,Keamanan,iso ?27001|iso/iec 27001
+Manual Testing,Testing,manual test|test case|test scenario|test plan|black ?box|white ?box|kasus uji|skenario (uji|pengujian)|pengujian perangkat lunak
+Automation Testing,Testing,automation test|pengujian otomatis|selenium|cypress|appium|katalon
+API Testing,Testing,postman|api test
+Performance Testing,Testing,jmeter|performance test|load test
+Figma,Desain,figma
+Adobe XD/Sketch,Desain,adobe xd|\bsketch\b
+Wireframe/Prototype,Desain,wireframe|prototyp|prototipe|purwarupa|mockup|mock-up
+User Research,Desain,user research|usability|user testing|pengujian kegunaan|\bpersona\b
+Adobe Photoshop/Illustrator,Desain,photoshop|illustrator
+UML,Analisis sistem,\buml\b|use case|activity diagram|sequence diagram|class diagram|diagram (kelas|aktivitas|sekuen)
+Requirement Analysis,Analisis sistem,requirements? (analysis|gathering|engineering|elicitation)|analisa kebutuhan|analisis kebutuhan|elisitasi|spesifikasi kebutuhan|\bsrs\b|kebutuhan sistem|business process|proses bisnis|\bbrd\b|\bfsd\b|user stor
+ERP/SAP,Analisis sistem,\berp\b|\bsap\b|odoo
+Hardware Troubleshooting,IT Support,"hardware|perangkat keras|troubleshoot\w*\s+(?:\w+\s+){0,3}(?:pc|computer|komputer|printer|laptop|perangkat|devices?)\b|perbaikan perangkat|instalasi perangkat|rakit (pc|komputer)"
+Helpdesk/Ticketing,IT Support,helpdesk|help desk|ticketing|service desk
+Windows OS,IT Support,windows(?! server)
+Microsoft Office,IT Support,ms office|microsoft office
+ITIL,IT Support,\bitil\b
+Agile/Scrum,Metodologi,agile|scrum|kanban|sprint
+SDLC,Metodologi,sdlc|software development life ?cycle
+OOP,Metodologi,\boop\b|object[- ]oriented|berorientasi objek
+Design Pattern/Clean Code,Metodologi,design pattern|clean code|solid principle
+Project Management,Metodologi,project management|manajemen proyek|\bpmp\b|prince2
+Komunikasi,Soft skill,communication|komunikasi
+Kerja tim,Soft skill,team ?work|team player|kerja sama|kerjasama|bekerja dalam tim
+Problem solving,Soft skill,problem solving|pemecahan masalah|analytical|analitis
+Bahasa Inggris,Soft skill,english|bahasa inggris
+Cloud computing (konsep),Cloud,cloud computing|komputasi awan|\biaas\b|\bpaas\b|\bsaas\b
+Information Security,Keamanan,information security|keamanan informasi|kriptografi|cryptograph|enkripsi|encryption
+Data Mining,Data & AI,data mining|penambangan data|clustering|\bk-?means\b
+IoT,Jaringan,internet of things|\biot\b|arduino|raspberry|mikrokontroler|microcontroller

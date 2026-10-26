@@ -1,0 +1,7 @@
+artifacts/kb/internal_*
+__pycache__/
+.pytest_cache/
+tests/
+*.db
+.env
+uploads/*

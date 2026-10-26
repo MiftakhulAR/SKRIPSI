@@ -1,0 +1,32 @@
+# Python
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.db
+backend/uploads/*
+!backend/uploads/.gitkeep
+# Node
+node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+.env
+.env.local
+# local test accounts (contain passwords)
+**/seed_accounts.local.json
+# never commit internal data (RPS, CPL text, tracer, private KB chunks)
+**/kb_v2_chunks.jsonl
+**/kb_v2_index.faiss
+**/*tracer*
+**/*rps*
+**/*.xlsx
+# internal knowledge-base layer (PNJ RPS/courses) - laptop only
+backend/artifacts/kb/internal_*
+# Environment: hanya template yang boleh masuk Git
+.env.*
+!.env.example
+!.env.*.example
+
+# Virtual environment tambahan
+venv/
