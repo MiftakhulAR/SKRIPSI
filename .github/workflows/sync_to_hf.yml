@@ -1,11 +1,14 @@
 name: Sync to Hugging Face Hub
 
 on:
-  push:
-    branches: [ main ] # Ganti menjadi 'master' jika branch utamamu bernama master
+  workflow_dispatch:
+
+#on:
+  #push:
+    #branches: [ main ] # Ganti menjadi 'master' jika branch utamamu bernama master
 
   # Memungkinkan kamu menjalankan workflow ini secara manual dari tab Actions
-  workflow_dispatch:
+  #workflow_dispatch:
 
 jobs:
   sync-to-hub:
