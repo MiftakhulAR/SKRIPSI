@@ -30,6 +30,7 @@ DOCKERFILE = """# CareerAI backend - Hugging Face Space (Docker). Built by tools
 FROM python:3.11-slim
 RUN useradd -m -u 1000 user
 WORKDIR /app
+RUN mkdir -p /app/uploads && chown -R user:user /app
 COPY requirements.txt .
 # CPU-only torch (much smaller than the default CUDA build), then the rest
 RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu \\
