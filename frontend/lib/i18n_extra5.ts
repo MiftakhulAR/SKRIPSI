@@ -1,6 +1,7 @@
 // Patch 12 texts: FR4 skill suggestions from the experience story (confirmed by the student).
 
 export const enExtra5 = {
+  err_llm_insufficient_memory: "AI is temporarily unavailable because the server has insufficient memory. Your profile and recommendations remain available.",
   exp_text_note: "Write freely, then press “Find skills in my story”. Nothing counts until you tick it.",
   fr4_btn: "Find skills in my story", fr4_busy: "Reading your story…",
   fr4_t: "Skills found in your story", fr4_d: "Tick the skills you really used. Only ticked skills count as experience (evidence = 1).",
@@ -15,6 +16,7 @@ export const enExtra5 = {
 };
 
 export const idExtra5: typeof enExtra5 = {
+  err_llm_insufficient_memory: "AI sementara tidak tersedia karena memori server tidak mencukupi. Profil dan hasil rekomendasi tetap dapat diakses.",
   exp_text_note: "Tulis dengan bebas, lalu tekan “Cari skill dari ceritaku”. Tidak ada yang dihitung sebelum kamu centang.",
   fr4_btn: "Cari skill dari ceritaku", fr4_busy: "Membaca ceritamu…",
   fr4_t: "Skill yang ditemukan di ceritamu", fr4_d: "Centang skill yang benar-benar kamu pakai. Hanya skill yang dicentang yang dihitung sebagai pengalaman (bukti = 1).",

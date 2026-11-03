@@ -18,6 +18,7 @@ load_dotenv(Path(__file__).resolve().parent.parent / ".env")       # API keys li
 
 from fastapi import Depends, FastAPI, File, Form, Header, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 from . import assistant, auth, catalog_db, db, extract, llm, rag
@@ -39,6 +40,11 @@ app.add_middleware(
     allow_origin_regex=r"http://(localhost|127\.0\.0\.1):\d+",   # any local dev port (3000, 3001, ...)
     allow_methods=["GET", "POST", "DELETE"], allow_headers=["*"],
 )
+@app.exception_handler(rag.EmbeddingCapacityError)
+async def embedding_capacity_error(request, exc):
+    return JSONResponse(status_code=503, content={"detail": "llm_insufficient_memory"})
+
+
 db.init()
 catalog_db.init()
 
@@ -51,8 +57,11 @@ def _warm_kb():
     def warm():
         kb = rag.get()
         if kb:
-            kb.embedder.encode(["warm-up"], kb.cfg["prefix_query"])
-            print("[RAG] ready", flush=True)
+            try:
+                kb.embedder.encode(["warm-up"], kb.cfg["prefix_query"])
+                print("[RAG] ready", flush=True)
+            except rag.EmbeddingCapacityError as exc:
+                print(f"[RAG] unavailable: {exc}. Core API remains available.", flush=True)
     threading.Thread(target=warm, daemon=True).start()
 
 

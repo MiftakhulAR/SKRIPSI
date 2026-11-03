@@ -30,12 +30,39 @@ def _log(msg: str):
     print(f"[RAG] {msg}", flush=True)
 
 
+class EmbeddingCapacityError(RuntimeError):
+    """The container cannot safely host the configured embedding model."""
+
+
+def _memory_limit_mb() -> int | None:
+    """Read the container's hard limit (cgroup v2 or v1), not the host RAM."""
+    limits = []
+    for name in ("/sys/fs/cgroup/memory.max", "/sys/fs/cgroup/memory/memory.limit_in_bytes",
+                 "/sys/fs/cgroup/memory.limit_in_bytes"):
+        try:
+            value = int(Path(name).read_text().strip())
+            if 0 < value < (1 << 60):
+                limits.append(value // (1024 * 1024))
+        except (OSError, ValueError):
+            continue
+    return min(limits) if limits else None
+
+
 class _Embedder:
     """Lazy sentence-transformers model. KB_EMBED_MOCK=1 gives a deterministic hashing embedder (tests only)."""
 
     def __init__(self, model: str, dim: int):
         self.model_name, self.dim, self._m = model, dim, None
         self.mock = os.environ.get("KB_EMBED_MOCK") == "1"
+        self._inference_lock = threading.Lock()
+
+    def capacity(self) -> dict:
+        limit = _memory_limit_mb()
+        # The unquantized multilingual-e5-base weights alone are about 1.1 GB.
+        # Keep room for torch, tokenization, inference, and the FastAPI process.
+        minimum = 1536 if self.model_name == "intfloat/multilingual-e5-base" else 0
+        return {"memory_limit_mb": limit, "minimum_memory_mb": minimum,
+                "capacity_ready": self.mock or limit is None or limit >= minimum}
 
     def encode(self, texts: list[str], prefix: str) -> np.ndarray:
         if self.mock:
@@ -44,12 +71,20 @@ class _Embedder:
                 for w in (prefix + t).lower().split():
                     out[i, zlib.crc32(w.encode()) % self.dim] += 1.0
             return out / np.maximum(np.linalg.norm(out, axis=1, keepdims=True), 1e-9)
-        if self._m is None:
-            from sentence_transformers import SentenceTransformer
-            _log(f"loading embedding model {self.model_name} (first time: download ~1 GB)")
-            self._m = SentenceTransformer(self.model_name, device="cpu")
-        return self._m.encode([prefix + t for t in texts], normalize_embeddings=True, convert_to_numpy=True,
-                              batch_size=32).astype("float32")
+        capacity = self.capacity()
+        if not capacity["capacity_ready"]:
+            raise EmbeddingCapacityError(
+                f"Container limit {capacity['memory_limit_mb']} MiB is below the "
+                f"{capacity['minimum_memory_mb']} MiB safety floor for {self.model_name}")
+        # Startup warm-up and requests can arrive together. Serialize BOTH loading
+        # and inference so they cannot create duplicate models or memory spikes.
+        with self._inference_lock:
+            if self._m is None:
+                from sentence_transformers import SentenceTransformer
+                _log(f"loading embedding model {self.model_name}")
+                self._m = SentenceTransformer(self.model_name, device="cpu")
+            return self._m.encode([prefix + t for t in texts], normalize_embeddings=True, convert_to_numpy=True,
+                                  batch_size=1).astype("float32")
 
 
 class KnowledgeBase:
@@ -122,7 +157,10 @@ class KnowledgeBase:
         kinds: dict[str, int] = {}
         for c in self.chunks:
             kinds[c["jenis"]] = kinds.get(c["jenis"], 0) + 1
-        return {"ready": True, "layer": self.layer, "passages": len(self.chunks), "by_type": kinds, "tau": self.tau,
+        capacity = self.embedder.capacity()
+        return {**capacity, "ready": capacity["capacity_ready"],
+                "error": None if capacity["capacity_ready"] else "insufficient_memory",
+                "embedding_loaded": self.embedder._m is not None, "layer": self.layer, "passages": len(self.chunks), "by_type": kinds, "tau": self.tau,
                 "top_k": self.top_k, "embedding_model": self.cfg["model_embedding"], "embedding_mock": self.embedder.mock,
                 "kb_version": self.cfg.get("kb_versi")}
 
