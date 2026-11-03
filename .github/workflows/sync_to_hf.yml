@@ -1,27 +1,58 @@
-name: Sync to Hugging Face Hub
+name: Deploy CareerAI backend to Hugging Face
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'deploy_hf/**'
+      - '.github/workflows/sync_to_hf.yml'
 
-#on:
-  #push:
-    #branches: [ main ] # Ganti menjadi 'master' jika branch utamamu bernama master
+permissions:
+  contents: read
 
-  # Memungkinkan kamu menjalankan workflow ini secara manual dari tab Actions
-  #workflow_dispatch:
+concurrency:
+  group: careerai-hf-production
+  cancel-in-progress: false
 
 jobs:
   sync-to-hub:
+    if: github.repository == 'MiftakhulAR/SKRIPSI'
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
-          fetch-depth: 0
-          lfs: true
-
-      - name: Push to Hugging Face Hub
+          persist-credentials: false
+      - name: Install pinned Hugging Face uploader
+        run: python -m pip install huggingface_hub==1.33.0
+      - name: Validate and upload deploy package to existing Space
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        # Ganti URL di bawah dengan format: https://huggingface.co/spaces/USERNAME_HF/NAMA_SPACE
-        # Jika ingin push ke bagian Models, hapus kata '/spaces'
-        run: git push --force https://ar4496:$HF_TOKEN@huggingface.co/spaces/ar4496/careerai main
+          HF_HUB_DISABLE_PROGRESS_BARS: '1'
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          from huggingface_hub import HfApi
+          root = Path('deploy_hf')
+          assert os.environ.get('HF_TOKEN'), 'Missing GitHub secret HF_TOKEN'
+          assert (root / 'README.md').read_text().startswith('---'), 'Missing Space configuration'
+          required = ['Dockerfile', 'requirements.txt', 'app/main.py', 'artifacts/kb/public_emb.npy']
+          assert all((root / name).is_file() for name in required), 'Incomplete deployment package'
+          for p in root.rglob('*'):
+              if p.is_file():
+                  assert not p.is_symlink(), 'Symlinks are not allowed in deploy package'
+                  assert not (p.name.startswith(('.env', 'internal_')) or p.suffix == '.db'
+                              or 'seed_accounts' in p.name or 'tracer' in p.name.lower()), 'Private file in deploy package'
+          result = HfApi().upload_folder(
+              repo_id='AR4496/careerai', repo_type='space',
+              folder_path=str(root), path_in_repo='',
+              allow_patterns=['README.md', 'Dockerfile', 'requirements.txt', 'app/*.py',
+                              'artifacts/*.csv', 'artifacts/*.json',
+                              'artifacts/kb/public_chunks.jsonl', 'artifacts/kb/public_emb.npy',
+                              'artifacts/kb/kb_codes.json', 'artifacts/kb/retrieval_config.json'],
+              commit_message='Deploy public CareerAI backend from GitHub ' + os.environ['GITHUB_SHA'][:12],
+          )
+          print('Uploaded public backend package:', result.oid)
+          PY
